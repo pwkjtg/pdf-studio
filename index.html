@@ -125,9 +125,16 @@
     <!-- Header / Navbar Utama -->
     <header class="h-16 glass-theme border-b border-theme flex items-center justify-between px-4 sm:px-6 sticky top-0 z-20 shadow-sm flex-shrink-0">
         <div class="flex items-center gap-2">
-            <svg class="w-7 h-7 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-            <h1 class="text-xl font-bold text-theme hidden sm:block">PDF Studio Premium</h1>
-            <h1 class="text-lg font-bold text-theme sm:hidden">PDF Studio</h1>
+            <!-- Logo Custom PDF Studio Premium -->
+            <svg class="w-8 h-8 text-[var(--accent)] drop-shadow-sm transition-colors duration-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 2V8H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.408 11.2393L16.8222 12.6535L11.8724 17.6033L9.75107 18.3104L10.4582 16.1891L15.408 11.2393Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.8222 12.6535L18.2364 11.2393C18.627 10.8488 18.627 10.2156 18.2364 9.82512C17.8459 9.4346 17.2127 9.4346 16.8222 9.82512L15.408 11.2393" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 18H7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h1 class="text-xl font-bold text-theme hidden sm:block tracking-tight">PDF Studio Premium</h1>
+            <h1 class="text-lg font-bold text-theme sm:hidden tracking-tight">PDF Studio</h1>
         </div>
 
         <!-- Pilihan Tema -->
@@ -146,8 +153,15 @@
         <!-- Langkah 1: Beranda / Upload File -->
         <div id="step-upload" class="flex-grow flex flex-col items-center justify-center p-6 w-full max-w-2xl mx-auto animate-fade-in">
             <div class="panel-theme p-10 rounded-3xl shadow-xl border border-theme text-center w-full max-w-lg">
-                <div class="bg-[var(--item-active)] w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-12 h-12 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                <div class="bg-[var(--item-active)] w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-[var(--accent)] border-opacity-20 transition-colors duration-300">
+                    <!-- Logo Custom Versi Besar -->
+                    <svg class="w-12 h-12 text-[var(--accent)] transition-colors duration-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 2V8H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.408 11.2393L16.8222 12.6535L11.8724 17.6033L9.75107 18.3104L10.4582 16.1891L15.408 11.2393Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16.8222 12.6535L18.2364 11.2393C18.627 10.8488 18.627 10.2156 18.2364 9.82512C17.8459 9.4346 17.2127 9.4346 16.8222 9.82512L15.408 11.2393" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6 18H7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </div>
                 <h2 class="text-2xl font-bold mb-3 text-theme">Buka File PDF</h2>
                 <p class="text-muted-theme text-sm mb-8 leading-relaxed">Pilih file PDF dari perangkat Anda untuk ditambahkan Tanda Tangan, Stempel, atau Teks.</p>
