@@ -97,10 +97,11 @@
         .btn-accent { background-color: var(--accent); color: #fff; }
         .btn-accent:hover { background-color: var(--accent-hover); }
 
-        /* Scrollbar kustom */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        /* Scrollbar kustom (Diperlebar agar mudah diklik di PC) */
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #9ca3af; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
         
         /* Area Pola Kanvas TTD */
         .bg-checker {
@@ -120,7 +121,7 @@
         .remove-btn { position: absolute; top: -10px; right: -10px; width: 24px; height: 24px; background-color: #ef4444; color: white; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2); cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; font-size: 14px; z-index: 10; }
     </style>
 </head>
-<body class="min-h-screen w-full flex flex-col overflow-hidden">
+<body class="h-screen w-full flex flex-col overflow-hidden">
 
     <!-- Header / Navbar Utama -->
     <header class="h-16 glass-theme border-b border-theme flex items-center justify-between px-4 sm:px-6 sticky top-0 z-20 shadow-sm flex-shrink-0">
@@ -148,10 +149,10 @@
     </header>
 
     <!-- Kontainer Konten Utama -->
-    <main class="flex-grow flex flex-col relative w-full h-full overflow-hidden">
+    <main class="flex-1 flex flex-col relative w-full overflow-hidden">
         
         <!-- Langkah 1: Beranda / Upload File -->
-        <div id="step-upload" class="flex-grow flex flex-col items-center justify-center p-6 w-full max-w-2xl mx-auto animate-fade-in">
+        <div id="step-upload" class="flex-1 flex flex-col items-center justify-center p-6 w-full max-w-2xl mx-auto animate-fade-in">
             <div class="panel-theme p-10 rounded-3xl shadow-xl border border-theme text-center w-full max-w-lg">
                 <div class="bg-[var(--item-active)] w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-[var(--accent)] border-opacity-20 transition-colors duration-300">
                     <!-- Logo Custom Versi Besar -->
@@ -174,7 +175,7 @@
         </div>
 
         <!-- Langkah 2: Area Kerja Editor (Disembunyikan awalnya) -->
-        <div id="step-workspace" class="hidden flex-grow flex-col h-full overflow-hidden">
+        <div id="step-workspace" class="hidden flex-1 flex-col overflow-hidden">
             
             <!-- Toolbar Editor -->
             <div class="panel-theme border-b border-theme flex items-center justify-between p-3 sm:px-6 flex-shrink-0 shadow-sm">
@@ -199,8 +200,9 @@
             </div>
 
             <!-- Kanvas PDF -->
-            <div id="editor-area" class="flex-grow overflow-auto flex items-start justify-center p-4 sm:p-8 bg-black/5 relative" onclick="deselectItems(event)">
-                <div id="pdf-wrapper" class="relative bg-white shadow-2xl border border-gray-200 rounded-sm touch-none transition-opacity duration-300">
+            <div id="editor-area" class="flex-1 overflow-auto flex items-start justify-center p-4 sm:p-8 bg-black/5 relative" onclick="deselectItems(event)">
+                <!-- Hapus touch-none dari pdf-wrapper agar trackpad PC bisa digunakan untuk scroll -->
+                <div id="pdf-wrapper" class="relative bg-white shadow-2xl border border-gray-200 rounded-sm hidden transition-opacity duration-300">
                     <canvas id="pdf-canvas" class="block w-full h-auto"></canvas>
                     <div id="items-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
                 </div>
