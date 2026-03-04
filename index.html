@@ -169,10 +169,10 @@
             </div>
 
             <!-- Editor View -->
-            <div id="editor-view" class="hidden flex-1 flex-col overflow-hidden z-20 bg-black/5">
+            <div id="editor-view" class="hidden flex-1 flex-col overflow-hidden z-20 bg-transparent">
                 
                 <!-- Toolbar Editor (Zoom, Page Info, Tools) -->
-                <div class="panel-theme border-b border-theme flex flex-wrap items-center justify-between p-2 sm:p-3 sm:px-6 flex-shrink-0 shadow-sm gap-2">
+                <div class="panel-theme border-b border-theme flex flex-wrap items-center justify-between p-2 sm:p-3 sm:px-6 flex-shrink-0 shadow-sm gap-2 relative z-30">
                     
                     <!-- Zoom & Page Info (Kiri) -->
                     <div class="flex items-center gap-2 flex-wrap">
@@ -199,16 +199,23 @@
                     </div>
                 </div>
 
-                <!-- Kanvas PDF Multihalaman (Scrollable & Zoomable & Pinchable) -->
-                <div id="editor-area" class="flex-1 overflow-auto flex items-start justify-center p-4 sm:p-8 relative" style="touch-action: pan-y;" onclick="deselectItems(event)">
-                    <!-- Kontainer Dokumen yang di Zoom -->
-                    <div id="pdf-document-container" class="relative flex flex-col items-center gap-6 transition-transform duration-100" style="transform-origin: top center; transform: scale(1);">
-                        <!-- Halaman PDF akan dirender di dalam sini -->
+                <!-- Kanvas PDF Multihalaman (Scrollable, Zoomable, Pinchable, & Bebas digeser!) -->
+                <!-- Menghapus batasan touch-action agar pengguna bisa scroll bebas pakai 1 jari -->
+                <div id="editor-area" class="flex-1 overflow-auto p-4 sm:p-8 relative bg-black/5" onclick="deselectItems(event)">
+                    
+                    <!-- Wrapper Pembantu untuk Kalkulasi Scroll saat Zoom agar batas layar bisa dijangkau -->
+                    <div id="zoom-wrapper" class="min-w-full min-h-full transition-all duration-100">
+                        
+                        <!-- Kontainer Dokumen yang di Zoom -->
+                        <div id="pdf-document-container" class="relative flex flex-col gap-6 transition-transform duration-100 origin-top-center mx-auto w-max" style="transform: scale(1);">
+                            <!-- Halaman PDF akan dirender di dalam sini -->
+                        </div>
+
                     </div>
                 </div>
 
                 <!-- Tombol Terpisah (Simpan & Kirim) -->
-                <div class="panel-theme border-t border-theme p-3 flex-shrink-0">
+                <div class="panel-theme border-t border-theme p-3 flex-shrink-0 relative z-30">
                     <div class="flex gap-3 justify-end max-w-5xl mx-auto w-full">
                         <button id="btn-save-pdf" class="flex-1 sm:flex-none w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl shadow-md flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]" title="Unduh ke Perangkat">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
@@ -356,6 +363,7 @@
         const editorView = document.getElementById('editor-view');
         const fileList = document.getElementById('file-list');
         const fileCount = document.getElementById('file-count');
+        const zoomWrapper = document.getElementById('zoom-wrapper');
         const pdfDocumentContainer = document.getElementById('pdf-document-container');
         const editorArea = document.getElementById('editor-area');
         const loading = document.getElementById('loading');
@@ -493,14 +501,29 @@
         function zoomOut() { setZoom(currentZoom - 0.2); }
         
         function setZoom(newZoom) {
-            // Batasi zoom agar tidak terlalu kecil atau terlalu besar
             currentZoom = Math.max(0.4, Math.min(3.0, newZoom));
             applyZoom();
         }
 
+        // PERBAIKAN ZOOM & SCROLL: Memaksa area luar mengenali ukuran zoom
         function applyZoom() {
             pdfDocumentContainer.style.transform = `scale(${currentZoom})`;
             document.getElementById('zoom-info').textContent = `${Math.round(currentZoom * 100)}%`;
+            
+            if (currentZoom > 1) {
+                // Agar tidak terpotong saat zoom in, titik tumbuh di set ke Kiri-Atas
+                pdfDocumentContainer.classList.remove('origin-top-center', 'mx-auto');
+                pdfDocumentContainer.classList.add('origin-top-left');
+                // Mengubah ukuran bungkus maya agar scrollbar muncul akurat
+                zoomWrapper.style.width = `${pdfDocumentContainer.offsetWidth * currentZoom}px`;
+                zoomWrapper.style.height = `${pdfDocumentContainer.offsetHeight * currentZoom}px`;
+            } else {
+                // Kembali ke tengah jika normal / kecil
+                pdfDocumentContainer.classList.add('origin-top-center', 'mx-auto');
+                pdfDocumentContainer.classList.remove('origin-top-left');
+                zoomWrapper.style.width = '100%';
+                zoomWrapper.style.height = '100%';
+            }
         }
 
         // === FITUR PINCH-TO-ZOOM (CUBIT LAYAR) ===
@@ -508,7 +531,6 @@
         let initialZoomOnPinch = null;
 
         editorArea.addEventListener('touchstart', (e) => {
-            // Jika yang disentuh adalah dua jari
             if (e.touches.length === 2) {
                 initialPinchDistance = Math.hypot(
                     e.touches[0].pageX - e.touches[1].pageX,
@@ -519,24 +541,19 @@
         });
 
         editorArea.addEventListener('touchmove', (e) => {
-            // Deteksi pergerakan dua jari untuk zoom
             if (e.touches.length === 2 && initialPinchDistance) {
-                e.preventDefault(); // Mencegah layar tertarik ke bawah (pull-to-refresh) saat mencubit
+                e.preventDefault(); // Mencegah reload browser
                 const currentDistance = Math.hypot(
                     e.touches[0].pageX - e.touches[1].pageX,
                     e.touches[0].pageY - e.touches[1].pageY
                 );
-                
-                // Hitung rasio pelebaran jari
                 const pinchRatio = currentDistance / initialPinchDistance;
                 setZoom(initialZoomOnPinch * pinchRatio);
             }
         }, { passive: false });
 
         editorArea.addEventListener('touchend', (e) => {
-            if (e.touches.length < 2) {
-                initialPinchDistance = null;
-            }
+            if (e.touches.length < 2) { initialPinchDistance = null; }
         });
         // ========================================
 
@@ -604,6 +621,8 @@
                 pageObserver.observe(wrapper);
             }
             
+            // Panggil applyZoom agar wrapper luar menyadari tinggi PDF total yang baru
+            applyZoom();
             updatePageInfoDisplay();
         }
 
@@ -652,7 +671,6 @@
             
             const controlsHtml = `<div class="item-controls"><button class="remove-btn">×</button><div class="resize-handle"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l5-5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg></div></div>`;
             
-            // Set style default di awal (Penting untuk kalkulasi Merge nanti)
             container.style.left = '50px';
             container.style.top = '100px';
 
@@ -687,7 +705,7 @@
         }
 
         function deselectItems(e) {
-            if (e.target.id === 'editor-area' || e.target.id === 'pdf-document-container' || e.target.tagName.toLowerCase() === 'canvas') {
+            if (e.target.id === 'editor-area' || e.target.id === 'zoom-wrapper' || e.target.id === 'pdf-document-container' || e.target.tagName.toLowerCase() === 'canvas') {
                 setActiveItem(null);
             }
         }
@@ -703,7 +721,6 @@
                 e.preventDefault(); e.stopPropagation();
                 setActiveItem(container.id);
                 isDragging = true; 
-                // Dukung sentuhan maupun mouse
                 startX = e.touches ? e.touches[0].clientX : e.clientX; 
                 startY = e.touches ? e.touches[0].clientY : e.clientY;
                 initialLeft = container.offsetLeft; initialTop = container.offsetTop;
@@ -748,7 +765,6 @@
             document.addEventListener('pointermove', moveHandler, { passive: false });
             document.addEventListener('pointerup', upHandler);
             document.addEventListener('pointercancel', upHandler);
-            // Tambahkan juga pelepasan sentuhan untuk layar mobile
             document.addEventListener('touchend', upHandler);
 
             removeBtn.addEventListener('pointerdown', (e) => {
@@ -969,7 +985,6 @@
             document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
         }
 
-        // Tombol 1: Simpan (Unduh ke HP)
         document.getElementById('btn-save-pdf').addEventListener('click', async () => {
             const pdfData = pdfFiles.find(p => p.id === currentPdfId);
             if (!pdfData) return;
@@ -983,7 +998,6 @@
             hideLoading();
         });
 
-        // Tombol 2: Kirim (Bagikan via WA/Email)
         document.getElementById('btn-share-pdf').addEventListener('click', async () => {
             const pdfData = pdfFiles.find(p => p.id === currentPdfId);
             if (!pdfData) return;
@@ -1004,7 +1018,6 @@
             hideLoading();
         });
 
-        // Tombol 3: Gabungkan Semua File (Merge)
         document.getElementById('btn-merge-pdf').addEventListener('click', async () => {
             if (pdfFiles.length < 2) {
                 alert("Minimal harus ada 2 file PDF di daftar untuk digabungkan. Silakan unggah file lagi.");
