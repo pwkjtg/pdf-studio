@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PDF Studio Premium</title>
+    
+    <!-- Meta untuk PWA -->
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- PWA Manifest & Icon Custom -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iIzNiODJmNiIvPjxwYXRoIGQ9Ik0xNCAySDZDNC44OTU0MyAyIDQgMi44OTU0MyA0IDRWMjBDNCAyMS4xMDQ2IDQuODk1NDMgMjIgNiAyMkgxOEMxOS4xMDQ2IDIyIDIwIDIxLjEwNDYgMjAgMjBWOEwxNCAyWiIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4yIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTE0IDJWOEgyMCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNS40MDggMTEuMjM5M0wxNi44MjIyIDEyLjY1MzVMMTEuODcyNCAxNy42MDMzTDkuNzUxMDcgMTguMzEwNEwxMC40NTgyIDE2LjE4OTFMMTUuNDA4IDExLjIzOTNaIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNi44MjIyIDEyLjY1MzVMMTguMjM2NCAxMS4yMzkzQzE4LjYyNyAxMC44NDg4IDE4LjYyNyAxMC4yMTU2IDE4LjIzNjQgOS44MjUxMkMxNy44NDU5IDkuNDM0NiAxNy4yMTI3IDkuNDM0NiAxNi44MjIyIDkuODI1MTJMMTUuNDA4IDExLjIzOTMiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNNiAxOEg3LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iIzNiODJmNiIvPjxwYXRoIGQ9Ik0xNCAySDZDNC44OTU0MyAyIDQgMi44OTU0MyA0IDRWMjBDNCAyMS4xMDQ2IDQuODk1NDMgMjIgNiAyMkgxOEMxOS4xMDQ2IDIyIDIwIDIxLjEwNDYgMjAgMjBWOEwxNCAyWiIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4yIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTE0IDJWOEgyMCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNS40MDggMTEuMjM5M0wxNi44MjIyIDEyLjY1MzVMMTEuODcyNCAxNy42MDMzTDkuNzUxMDcgMTguMzEwNEwxMC40NTgyIDE2LjE4OTFMMTUuNDA4IDExLjIzOTNaIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNi44MjIyIDEyLjY1MzVMMTguMjM2NCAxMS4yMzkzQzE4LjYyNyAxMC44NDg4IDE4LjYyNyAxMC4yMTU2IDE4LjIzNjQgOS44MjUxMkMxNy44NDU5IDkuNDM0NiAxNy4yMTI3IDkuNDM0NiAxNi44MjIyIDkuODI1MTJMMTUuNDA4IDExLjIzOTMiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNNiAxOEg3LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=">
+    
+    <!-- Library Eksternal -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    
+    <style>
+        /* CSS Variables untuk Tema */
+        :root {
+            --bg-body: #f3f4f6; --bg-panel: #ffffff; --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #1f2937; --text-muted: #6b7280; --border-color: #e5e7eb;
+            --accent: #3b82f6; --accent-hover: #2563eb; --item-active: #dbeafe;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0f172a; --bg-panel: #1e293b; --bg-glass: rgba(30, 41, 59, 0.85);
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border-color: #334155;
+            --accent: #60a5fa; --accent-hover: #3b82f6; --item-active: rgba(59, 130, 246, 0.2);
+        }
+
+        [data-theme="sepia"] {
+            --bg-body: #f4ecd8; --bg-panel: #fffbf0; --bg-glass: rgba(255, 251, 240, 0.85);
+            --text-main: #433422; --text-muted: #78716c; --border-color: #d6caba;
+            --accent: #d97706; --accent-hover: #b45309; --item-active: #fef3c7;
+        }
+
+        [data-theme="ocean"] {
+            --bg-body: #e0f2fe; --bg-panel: #f0f9ff; --bg-glass: rgba(240, 249, 255, 0.85);
+            --text-main: #0c4a6e; --text-muted: #0284c7; --border-color: #bae6fd;
+            --accent: #0ea5e9; --accent-hover: #0284c7; --item-active: #bae6fd;
+        }
+
+        [data-theme="forest"] {
+            --bg-body: #f0fdf4; --bg-panel: #f8fafc; --bg-glass: rgba(248, 250, 252, 0.85);
+            --text-main: #14532d; --text-muted: #16a34a; --border-color: #bbf7d0;
+            --accent: #22c55e; --accent-hover: #16a34a; --item-active: #dcfce7;
+        }
+
+        body { background-color: var(--bg-body); color: var(--text-main); font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .panel-theme { background-color: var(--bg-panel); border-color: var(--border-color); }
+        .glass-theme { background-color: var(--bg-glass); backdrop-filter: blur(12px); border-color: var(--border-color); }
+        .text-theme { color: var(--text-main); }
+        .text-muted-theme { color: var(--text-muted); }
+        .border-theme { border-color: var(--border-color); }
+        .btn-accent { background-color: var(--accent); color: #fff; }
+        .btn-accent:hover { background-color: var(--accent-hover); }
+
+        /* Scrollbar kustom diperlebar agar mudah diklik di PC */
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #9ca3af; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+        
+        .bg-checker { background-color: #e5e5f7; background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #ffffff55, #ffffff ); }
+
+        /* Elemen Interaktif (Item) */
+        .editable-item { position: absolute; cursor: move; touch-action: none; border: 2px solid transparent; border-radius: 8px; }
+        .editable-item.is-active { border: 2px dashed var(--accent); background-color: var(--item-active); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .editable-item img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+        .editable-item .item-text { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #000; pointer-events: none; white-space: nowrap; }
+        .editable-item .item-controls { display: none; }
+        .editable-item.is-active .item-controls { display: block; }
+        
+        .resize-handle { position: absolute; bottom: -10px; right: -10px; width: 24px; height: 24px; background-color: var(--accent); border: 2px solid var(--bg-panel); border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2); cursor: se-resize; display: flex; align-items: center; justify-content: center; color: white; z-index: 10; }
+        .remove-btn { position: absolute; top: -10px; right: -10px; width: 24px; height: 24px; background-color: #ef4444; color: white; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2); cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; font-size: 14px; z-index: 10; }
+    </style>
+</head>
+<body class="h-screen w-full flex flex-col overflow-hidden">
+
+    <!-- Header / Navbar Utama -->
+    <header class="h-16 glass-theme border-b border-theme flex items-center justify-between px-4 sm:px-6 sticky top-0 z-20 shadow-sm flex-shrink-0">
+        <div class="flex items-center gap-3">
+            <button class="lg:hidden p-2 -ml-2 rounded-lg text-theme hover:bg-black/5" onclick="toggleSidebar()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <svg class="w-8 h-8 text-[var(--accent)] drop-shadow-sm transition-colors duration-300 hidden sm:block" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 2V8H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.408 11.2393L16.8222 12.6535L11.8724 17.6033L9.75107 18.3104L10.4582 16.1891L15.408 11.2393Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.8222 12.6535L18.2364 11.2393C18.627 10.8488 18.627 10.2156 18.2364 9.82512C17.8459 9.4346 17.2127 9.4346 16.8222 9.82512L15.408 11.2393" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 18H7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h1 class="text-xl font-bold text-theme tracking-tight">PDF Studio Premium</h1>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <!-- Label Teks Tema -->
+            <span class="text-sm font-bold text-muted-theme hidden md:inline tracking-wide">Tema:</span>
+            <!-- Pemilihan Warna Tema -->
+            <div class="flex items-center gap-1.5 bg-black/5 p-1.5 rounded-full">
+                <button onclick="setTheme('light')" class="w-6 h-6 rounded-full bg-[#f3f4f6] border-2 border-gray-500 shadow-sm hover:scale-110 transition-transform theme-btn" data-target="light" title="Light"></button>
+                <button onclick="setTheme('dark')" class="w-6 h-6 rounded-full bg-[#0f172a] border-2 border-transparent shadow-sm hover:scale-110 transition-transform theme-btn" data-target="dark" title="Dark"></button>
+                <button onclick="setTheme('sepia')" class="w-6 h-6 rounded-full bg-[#f4ecd8] border-2 border-transparent shadow-sm hover:scale-110 transition-transform theme-btn" data-target="sepia" title="Sepia"></button>
+                <button onclick="setTheme('ocean')" class="w-6 h-6 rounded-full bg-[#e0f2fe] border-2 border-transparent shadow-sm hover:scale-110 transition-transform theme-btn" data-target="ocean" title="Ocean"></button>
+                <button onclick="setTheme('forest')" class="w-6 h-6 rounded-full bg-[#f0fdf4] border-2 border-transparent shadow-sm hover:scale-110 transition-transform theme-btn" data-target="forest" title="Forest"></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden relative">
+        <!-- Sidebar / File Organizer -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden" onclick="toggleSidebar()"></div>
+        <aside id="sidebar" class="w-72 sm:w-80 flex-shrink-0 panel-theme border-r border-theme flex flex-col shadow-xl lg:shadow-none absolute lg:relative z-40 h-full transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+            <div class="flex justify-between items-center p-4 border-b border-theme lg:hidden">
+                <span class="font-bold text-theme">Menu File</span>
+                <button class="p-1 rounded-lg text-theme hover:bg-black/5" onclick="toggleSidebar()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <div class="p-4 flex-grow flex flex-col overflow-hidden">
+                <input type="file" id="file-input" accept="application/pdf" multiple class="hidden">
+                
+                <div class="flex flex-col gap-2 mb-4">
+                    <button onclick="document.getElementById('file-input').click()" class="w-full py-3 border-2 border-dashed border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--item-active)] rounded-xl font-bold text-sm transition-colors flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        Tambah File PDF
+                    </button>
+                    <!-- Tombol Gabungkan PDF -->
+                    <button id="btn-merge-pdf" class="w-full py-2.5 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl font-bold text-sm transition-colors flex items-center justify-center gap-2 shadow-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        Gabung Semua PDF
+                    </button>
+                </div>
+
+                <div class="flex justify-between items-center mb-2 px-1">
+                    <p class="text-xs font-bold text-muted-theme uppercase tracking-wider">Daftar Dokumen</p>
+                    <span id="file-count" class="text-xs bg-[var(--accent)] text-white px-2 py-0.5 rounded-full font-bold">0</span>
+                </div>
+
+                <ul id="file-list" class="flex-grow overflow-y-auto space-y-2 pr-1 pb-4">
+                    <li class="text-center text-sm text-muted-theme mt-10 p-4 border border-dashed border-theme rounded-xl">Belum ada file.<br>Klik "Tambah" untuk mulai.</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Area Kerja Utama -->
+        <main class="flex-1 flex flex-col overflow-hidden relative bg-black/5">
+            
+            <!-- Empty State -->
+            <div id="empty-state" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center animate-fade-in z-10">
+                <div class="bg-white/50 backdrop-blur-sm p-10 rounded-3xl shadow-xl border border-gray-200/50 max-w-lg w-full">
+                    <div class="bg-[var(--item-active)] w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-[var(--accent)] border-opacity-20">
+                        <svg class="w-12 h-12 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2 text-gray-800">Ruang Kerja Kosong</h2>
+                    <p class="text-gray-500 text-sm mb-6">Silakan pilih atau tambahkan file PDF dari panel sebelah kiri untuk mulai menambahkan tanda tangan.</p>
+                    <button onclick="document.getElementById('file-input').click()" class="lg:hidden btn-accent text-sm font-bold py-3 px-6 rounded-xl shadow-lg transition-transform hover:-translate-y-1">
+                        Buka PDF Sekarang
+                    </button>
+                </div>
+            </div>
+
+            <!-- Editor View -->
+            <div id="editor-view" class="hidden flex-1 flex-col overflow-hidden z-20 bg-transparent">
+                
+                <!-- Toolbar Editor (Zoom, Page Info, Tools) -->
+                <div class="panel-theme border-b border-theme flex flex-wrap items-center justify-between p-2 sm:p-3 sm:px-6 flex-shrink-0 shadow-sm gap-2 relative z-30">
+                    
+                    <!-- Zoom & Page Info (Kiri) -->
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <div class="flex items-center bg-black/5 rounded-lg p-1">
+                            <button onclick="zoomOut()" class="px-3 py-1 rounded-md text-theme hover:bg-white/50 text-lg font-bold leading-none" title="Perkecil">−</button>
+                            <span id="zoom-info" class="text-xs sm:text-sm font-bold px-2 text-theme min-w-[45px] text-center">100%</span>
+                            <button onclick="zoomIn()" class="px-3 py-1 rounded-md text-theme hover:bg-white/50 text-lg font-bold leading-none" title="Perbesar">+</button>
+                        </div>
+                        <div class="flex items-center bg-black/5 rounded-lg p-1 px-3">
+                            <span id="page-info" class="text-xs sm:text-sm font-semibold text-theme">Hal 1 / 1</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Alat Utama (Kanan) -->
+                    <div class="flex items-center gap-2">
+                        <button id="btn-delete-page" class="bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold shadow-sm flex items-center gap-1.5 transition-colors" title="Hapus Halaman yang sedang dilihat">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            <span class="hidden sm:inline">Hapus Hal.</span>
+                        </button>
+                        <button onclick="openModal('modal-tools')" class="btn-accent px-4 py-2 rounded-xl text-xs sm:text-sm font-bold shadow-sm flex items-center gap-1.5 transition-transform hover:scale-105">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            <span>Sisipkan</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kanvas PDF Multihalaman (Scrollable, Zoomable, Pinchable, & Bebas digeser!) -->
+                <!-- Menghapus batasan touch-action agar pengguna bisa scroll bebas pakai 1 jari -->
+                <div id="editor-area" class="flex-1 overflow-auto p-4 sm:p-8 relative bg-black/5" onclick="deselectItems(event)">
+                    
+                    <!-- Wrapper Pembantu untuk Kalkulasi Scroll saat Zoom agar batas layar bisa dijangkau -->
+                    <div id="zoom-wrapper" class="min-w-full min-h-full transition-all duration-100">
+                        
+                        <!-- Kontainer Dokumen yang di Zoom -->
+                        <div id="pdf-document-container" class="relative flex flex-col gap-6 transition-transform duration-100 origin-top-center mx-auto w-max" style="transform: scale(1);">
+                            <!-- Halaman PDF akan dirender di dalam sini -->
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Tombol Terpisah (Simpan & Kirim) -->
+                <div class="panel-theme border-t border-theme p-3 flex-shrink-0 relative z-30">
+                    <div class="flex gap-3 justify-end max-w-5xl mx-auto w-full">
+                        <button id="btn-save-pdf" class="flex-1 sm:flex-none w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl shadow-md flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]" title="Unduh ke Perangkat">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Simpan
+                        </button>
+                        <button id="btn-share-pdf" class="flex-1 sm:flex-none w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-xl shadow-md flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]" title="Bagikan via WA/Email">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
+                            Kirim
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal: Pilihan Alat Sisipkan -->
+    <div id="modal-tools" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex-col justify-end sm:justify-center items-center" onclick="closeModals(event)">
+        <div class="panel-theme w-full sm:w-80 sm:rounded-2xl rounded-t-3xl p-6 shadow-2xl transform transition-transform" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-bold text-lg text-theme">Sisipkan Item</h3>
+                <button onclick="document.getElementById('modal-tools').classList.replace('flex','hidden')" class="text-muted-theme hover:text-red-500 font-bold text-xl">&times;</button>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="openModal('modal-signature')" class="flex flex-col items-center p-4 border border-theme rounded-xl hover:bg-[var(--item-active)] transition-colors group">
+                    <span class="text-3xl mb-2 group-hover:scale-110 transition-transform">✍️</span>
+                    <span class="text-sm font-semibold text-theme">TTD/Stempel</span>
+                </button>
+                <button onclick="openModal('modal-text')" class="flex flex-col items-center p-4 border border-theme rounded-xl hover:bg-[var(--item-active)] transition-colors group">
+                    <span class="text-3xl mb-2 group-hover:scale-110 transition-transform">🔤</span>
+                    <span class="text-sm font-semibold text-theme">Teks/Nama</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Tanda Tangan & Stempel -->
+    <div id="modal-signature" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex-col justify-center items-center p-2 sm:p-4" onclick="closeModals(event)">
+        <div class="panel-theme w-full max-w-md rounded-2xl flex flex-col overflow-hidden shadow-2xl max-h-[90vh]" onclick="event.stopPropagation()">
+            <div class="p-4 border-b border-theme flex justify-between items-center bg-black/5">
+                <h3 class="font-bold text-theme">Studio TTD & Stempel</h3>
+                <button onclick="document.getElementById('modal-signature').classList.replace('flex','hidden')" class="text-muted-theme hover:text-red-500 font-bold text-xl">&times;</button>
+            </div>
+            
+            <div class="flex text-xs sm:text-sm font-medium border-b border-theme bg-black/5">
+                <button id="tab-draw" class="flex-1 py-3 text-[var(--accent)] border-b-2 border-[var(--accent)] transition-colors">✎ Gambar</button>
+                <button id="tab-upload" class="flex-1 py-3 text-muted-theme border-b-2 border-transparent transition-colors">📷 Stempel/Foto</button>
+                <button id="tab-saved" class="flex-1 py-3 text-muted-theme border-b-2 border-transparent transition-colors">💾 Tersimpan</button>
+            </div>
+            
+            <div id="content-draw-upload" class="flex flex-col flex-grow">
+                <div class="p-4 bg-checker relative flex flex-col items-center justify-center min-h-[200px] sm:min-h-[250px]">
+                    <canvas id="signature-pad" class="w-full h-48 bg-transparent border border-gray-300 rounded-xl shadow-inner" style="touch-action: none;"></canvas>
+                    
+                    <div id="upload-overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-white/95 hidden z-10 p-6">
+                        <input type="file" id="image-upload" accept="image/*" class="hidden">
+                        <button onclick="document.getElementById('image-upload').click()" class="btn-accent px-6 py-3 rounded-xl font-bold shadow-md flex items-center gap-2 mb-3">
+                            📷 Pilih Foto / Stempel
+                        </button>
+                        <p class="text-xs text-gray-500 text-center">Otomatis hapus background putih & pertahankan warna asli.</p>
+                    </div>
+                </div>
+
+                <div id="controls-transparency" class="p-4 border-t border-theme hidden flex-col bg-black/5">
+                    <label class="text-xs font-semibold text-theme mb-2 flex justify-between">
+                        <span>Hapus Kertas Putih (Toleransi):</span>
+                        <span id="threshold-val">200</span>
+                    </label>
+                    <input type="range" id="threshold-slider" min="50" max="250" value="200" class="w-full accent-[var(--accent)]">
+                    <div class="mt-3 flex items-center">
+                        <input type="checkbox" id="cb-keep-color" class="mr-2 w-4 h-4 accent-[var(--accent)]" checked>
+                        <label for="cb-keep-color" class="text-[11px] sm:text-xs text-theme cursor-pointer leading-tight">Pertahankan Warna Asli (Cocok untuk stempel biru/merah)</label>
+                    </div>
+                </div>
+
+                <div class="px-4 py-3 border-t border-theme flex items-center bg-black/5">
+                    <input type="checkbox" id="cb-save-sig" class="mr-2 w-4 h-4 accent-[var(--accent)]" checked>
+                    <label for="cb-save-sig" class="text-sm text-theme font-medium cursor-pointer">Simpan item ini untuk dipakai lagi</label>
+                </div>
+
+                <div class="p-4 flex gap-3 border-t border-theme">
+                    <button onclick="clearSignature()" class="flex-1 py-2.5 bg-red-100 text-red-600 font-bold rounded-xl hover:bg-red-200 transition-colors">Bersihkan</button>
+                    <button id="btn-apply-sig" class="flex-1 py-2.5 btn-accent font-bold rounded-xl shadow-md">Terapkan ke PDF</button>
+                </div>
+            </div>
+
+            <div id="content-saved" class="hidden flex-col flex-grow p-4 overflow-y-auto max-h-[350px]">
+                <p class="text-xs text-muted-theme mb-3 text-center">Ketuk item di bawah untuk menerapkannya.</p>
+                <div id="saved-sig-grid" class="grid grid-cols-2 gap-3"></div>
+                <div id="no-saved-msg" class="text-center text-muted-theme py-8 hidden">Belum ada item yang disimpan.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Teks -->
+    <div id="modal-text" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex-col justify-center items-center p-4" onclick="closeModals(event)">
+        <div class="panel-theme w-full max-w-sm rounded-2xl flex flex-col overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+            <div class="p-4 border-b border-theme flex justify-between items-center bg-black/5">
+                <h3 class="font-bold text-theme">Tambahkan Teks</h3>
+                <button onclick="document.getElementById('modal-text').classList.replace('flex','hidden')" class="text-muted-theme hover:text-red-500 font-bold text-xl">&times;</button>
+            </div>
+            <div class="p-5">
+                <input type="text" id="input-text-name" placeholder="Ketik sesuatu..." class="w-full border-2 border-[var(--border-color)] bg-transparent text-theme rounded-xl p-3 text-lg focus:border-[var(--accent)] focus:outline-none transition-colors">
+            </div>
+            <div class="p-4 border-t border-theme">
+                <button id="btn-apply-text" class="w-full py-3 btn-accent font-bold rounded-xl shadow-md">Tambahkan ke Dokumen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[60] hidden flex-col items-center justify-center">
+        <div class="animate-spin rounded-full h-14 w-14 border-b-4 border-white mb-4"></div>
+        <p class="text-white font-bold text-lg tracking-wide" id="loading-text">Memproses...</p>
+    </div>
+
+    <script>
+        // --- 1. THEME ENGINE ---
+        function setTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                if(btn.dataset.target === themeName) {
+                    btn.classList.add('border-gray-500'); btn.classList.remove('border-transparent', 'border-gray-300');
+                } else {
+                    btn.classList.remove('border-gray-500'); btn.classList.add('border-transparent');
+                }
+            });
+        }
+        document.querySelector('[data-target="light"]').classList.replace('border-transparent', 'border-gray-500');
+
+        // --- 2. GLOBAL STATE ---
+        let pdfFiles = []; 
+        let currentPdfId = null;
+        let pdfDocRendering = null;
+        let activeItemId = null;
+        let currentMode = 'draw';
+        let uploadedImageObj = null;
+
+        // Variabel Zoom & Scroll Aktif
+        let currentZoom = 1.0;
+        let activePageNum = 1;
+        const BASE_SCALE = 1.5; // Render dasar HD
+
+        // --- 3. DOM ELEMENTS UTILS ---
+        const emptyState = document.getElementById('empty-state');
+        const editorView = document.getElementById('editor-view');
+        const fileList = document.getElementById('file-list');
+        const fileCount = document.getElementById('file-count');
+        const zoomWrapper = document.getElementById('zoom-wrapper');
+        const pdfDocumentContainer = document.getElementById('pdf-document-container');
+        const editorArea = document.getElementById('editor-area');
+        const loading = document.getElementById('loading');
+        const loadingText = document.getElementById('loading-text');
+
+        const sigPadCanvas = document.getElementById('signature-pad');
+        const sigCtx = sigPadCanvas.getContext('2d');
+
+        function showLoading(t) { loadingText.textContent = t; loading.classList.replace('hidden', 'flex'); }
+        function hideLoading() { loading.classList.replace('flex', 'hidden'); }
+        function closeModals(e) { if (e.target.classList.contains('fixed')) e.target.classList.replace('flex', 'hidden'); }
+        function openModal(id) {
+            document.getElementById('modal-tools').classList.replace('flex', 'hidden');
+            document.getElementById(id).classList.replace('hidden', 'flex');
+            if(id === 'modal-signature') { setTimeout(resizeSigCanvas, 50); if(currentMode === 'saved') renderSavedSignatures(); }
+            if(id === 'modal-text') setTimeout(() => document.getElementById('input-text-name').focus(), 50);
+        }
+
+        // --- 4. SIDEBAR & FILE MANAGER ---
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+            document.getElementById('sidebar-overlay').classList.toggle('hidden');
+        }
+
+        async function handleFiles(files) {
+            showLoading("Mengunggah File...");
+            for (let file of files) {
+                if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) continue;
+                try {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const uint8Array = new Uint8Array(arrayBuffer);
+                    
+                    const pdf = await pdfjsLib.getDocument({ data: uint8Array.slice() }).promise;
+                    
+                    const newFile = {
+                        id: 'pdf_' + Date.now() + Math.floor(Math.random() * 1000),
+                        name: file.name,
+                        bytes: uint8Array,
+                        totalPages: pdf.numPages,
+                        items: []
+                    };
+                    pdfFiles.push(newFile);
+                } catch (error) { console.error("Gagal membaca PDF", error); }
+            }
+            renderFileList();
+            hideLoading();
+            
+            const fileInput = document.getElementById('file-input');
+            if(fileInput) fileInput.value = '';
+            
+            if (pdfFiles.length > 0 && !currentPdfId) openPdf(pdfFiles[pdfFiles.length-1].id);
+            if(window.innerWidth < 1024 && !document.getElementById('sidebar').classList.contains('-translate-x-full')) {
+                toggleSidebar();
+            }
+        }
+
+        document.getElementById('file-input').addEventListener('change', (e) => {
+            if (e.target.files.length > 0) handleFiles(e.target.files);
+        });
+
+        function renderFileList() {
+            fileCount.textContent = pdfFiles.length;
+            fileList.innerHTML = '';
+            
+            if (pdfFiles.length === 0) {
+                fileList.innerHTML = '<li class="text-center text-sm text-muted-theme mt-10 p-4 border border-dashed border-theme rounded-xl">Belum ada file.<br>Klik "Tambah File PDF" untuk mulai.</li>';
+                emptyState.classList.remove('hidden');
+                editorView.classList.replace('flex', 'hidden');
+                currentPdfId = null;
+                return;
+            }
+
+            pdfFiles.forEach(pdf => {
+                const li = document.createElement('li');
+                const isActive = pdf.id === currentPdfId;
+                li.className = `flex justify-between items-center p-3 rounded-xl cursor-pointer border ${isActive ? 'border-[var(--accent)] bg-[var(--item-active)] shadow-sm' : 'border-transparent hover:bg-black/5'} transition-colors group`;
+                
+                li.innerHTML = `
+                    <div class="flex items-center gap-3 overflow-hidden flex-1" onclick="openPdf('${pdf.id}')">
+                        <svg class="w-8 h-8 flex-shrink-0 ${isActive ? 'text-[var(--accent)]' : 'text-gray-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        <div class="flex flex-col overflow-hidden">
+                            <span class="text-sm font-medium text-theme truncate">${pdf.name}</span>
+                            <span class="text-[10px] text-muted-theme">${pdf.totalPages} Halaman</span>
+                        </div>
+                    </div>
+                    <button onclick="deletePdf('${pdf.id}', event)" class="p-2 text-gray-400 hover:text-red-500 rounded-lg hover:bg-red-50 transition-colors" title="Hapus File dari Daftar">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    </button>
+                `;
+                fileList.appendChild(li);
+            });
+        }
+
+        function deletePdf(id, event) {
+            event.stopPropagation();
+            if(!confirm("Hapus file ini dari aplikasi?")) return;
+            pdfFiles = pdfFiles.filter(p => p.id !== id);
+            
+            if (currentPdfId === id) {
+                currentPdfId = null;
+                if (pdfFiles.length > 0) openPdf(pdfFiles[0].id);
+                else renderFileList(); 
+            } else {
+                renderFileList();
+            }
+        }
+
+        // --- 5. PDF VIEWER (SCROLL, ZOOM, & PINCH LOGIC) ---
+        
+        const pageObserver = new IntersectionObserver((entries) => {
+            let maxVisible = 0;
+            let mostVisiblePage = activePageNum;
+            
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.intersectionRatio > maxVisible) {
+                        maxVisible = entry.intersectionRatio;
+                        mostVisiblePage = parseInt(entry.target.dataset.page);
+                    }
+                }
+            });
+            
+            if (maxVisible > 0) {
+                activePageNum = mostVisiblePage;
+                updatePageInfoDisplay();
+            }
+        }, { threshold: [0.2, 0.5, 0.8] });
+
+        function updatePageInfoDisplay() {
+            const pdf = pdfFiles.find(p => p.id === currentPdfId);
+            if(pdf) document.getElementById('page-info').textContent = `Hal ${activePageNum} / ${pdf.totalPages}`;
+        }
+
+        function zoomIn() { setZoom(currentZoom + 0.2); }
+        function zoomOut() { setZoom(currentZoom - 0.2); }
+        
+        function setZoom(newZoom) {
+            currentZoom = Math.max(0.4, Math.min(3.0, newZoom));
+            applyZoom();
+        }
+
+        // PERBAIKAN ZOOM & SCROLL: Memaksa area luar mengenali ukuran zoom
+        function applyZoom() {
+            pdfDocumentContainer.style.transform = `scale(${currentZoom})`;
+            document.getElementById('zoom-info').textContent = `${Math.round(currentZoom * 100)}%`;
+            
+            if (currentZoom > 1) {
+                // Agar tidak terpotong saat zoom in, titik tumbuh di set ke Kiri-Atas
+                pdfDocumentContainer.classList.remove('origin-top-center', 'mx-auto');
+                pdfDocumentContainer.classList.add('origin-top-left');
+                // Mengubah ukuran bungkus maya agar scrollbar muncul akurat
+                zoomWrapper.style.width = `${pdfDocumentContainer.offsetWidth * currentZoom}px`;
+                zoomWrapper.style.height = `${pdfDocumentContainer.offsetHeight * currentZoom}px`;
+            } else {
+                // Kembali ke tengah jika normal / kecil
+                pdfDocumentContainer.classList.add('origin-top-center', 'mx-auto');
+                pdfDocumentContainer.classList.remove('origin-top-left');
+                zoomWrapper.style.width = '100%';
+                zoomWrapper.style.height = '100%';
+            }
+        }
+
+        // === FITUR PINCH-TO-ZOOM (CUBIT LAYAR) ===
+        let initialPinchDistance = null;
+        let initialZoomOnPinch = null;
+
+        editorArea.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                initialPinchDistance = Math.hypot(
+                    e.touches[0].pageX - e.touches[1].pageX,
+                    e.touches[0].pageY - e.touches[1].pageY
+                );
+                initialZoomOnPinch = currentZoom;
+            }
+        });
+
+        editorArea.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 2 && initialPinchDistance) {
+                e.preventDefault(); // Mencegah reload browser
+                const currentDistance = Math.hypot(
+                    e.touches[0].pageX - e.touches[1].pageX,
+                    e.touches[0].pageY - e.touches[1].pageY
+                );
+                const pinchRatio = currentDistance / initialPinchDistance;
+                setZoom(initialZoomOnPinch * pinchRatio);
+            }
+        }, { passive: false });
+
+        editorArea.addEventListener('touchend', (e) => {
+            if (e.touches.length < 2) { initialPinchDistance = null; }
+        });
+        // ========================================
+
+        async function openPdf(id) {
+            const pdfData = pdfFiles.find(p => p.id === id);
+            if (!pdfData) return;
+            
+            currentPdfId = id;
+            renderFileList(); 
+            
+            emptyState.classList.add('hidden');
+            editorView.classList.replace('hidden', 'flex');
+            
+            showLoading("Memuat Dokumen...");
+            try {
+                pdfDocRendering = await pdfjsLib.getDocument({ data: pdfData.bytes.slice() }).promise;
+                currentZoom = 1.0; 
+                applyZoom();
+                await renderAllPages(pdfData);
+            } catch (error) {
+                console.error(error); alert("Gagal merender PDF.");
+            }
+            hideLoading();
+            
+            if(window.innerWidth < 1024 && !document.getElementById('sidebar').classList.contains('-translate-x-full')) {
+                toggleSidebar();
+            }
+        }
+
+        async function renderAllPages(pdfData) {
+            pageObserver.disconnect(); 
+            pdfDocumentContainer.innerHTML = ''; 
+            activePageNum = 1;
+            
+            for(let num = 1; num <= pdfData.totalPages; num++) {
+                const page = await pdfDocRendering.getPage(num);
+                const viewport = page.getViewport({ scale: BASE_SCALE });
+                
+                const wrapper = document.createElement('div');
+                wrapper.className = 'pdf-page-wrapper relative bg-white shadow-xl border border-gray-200';
+                wrapper.dataset.page = num;
+                wrapper.style.width = `${viewport.width}px`;
+                wrapper.style.height = `${viewport.height}px`;
+                
+                const canvas = document.createElement('canvas');
+                canvas.className = 'block';
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                wrapper.appendChild(canvas);
+                
+                const itemsContainer = document.createElement('div');
+                itemsContainer.className = 'items-container absolute inset-0 pointer-events-none overflow-hidden';
+                wrapper.appendChild(itemsContainer);
+                
+                pdfDocumentContainer.appendChild(wrapper);
+                
+                await page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport }).promise;
+                
+                pdfData.items.forEach(item => {
+                    if (item.page === num) {
+                        itemsContainer.appendChild(item.element);
+                    }
+                });
+                
+                pageObserver.observe(wrapper);
+            }
+            
+            // Panggil applyZoom agar wrapper luar menyadari tinggi PDF total yang baru
+            applyZoom();
+            updatePageInfoDisplay();
+        }
+
+        // Hapus Halaman Aktif
+        document.getElementById('btn-delete-page').addEventListener('click', async () => {
+            const pdfData = pdfFiles.find(p => p.id === currentPdfId);
+            if (!pdfData) return;
+            
+            if (pdfData.totalPages <= 1) { alert("Dokumen minimal harus memiliki 1 halaman."); return; }
+            if (!confirm(`Yakin ingin menghapus Halaman ${activePageNum} secara permanen?`)) return;
+
+            showLoading("Menghapus Halaman...");
+            try {
+                // Terapkan item dulu agar aman, lalu hapus halaman
+                const bakedBytes = await bakePdf(pdfData);
+                const pdfDoc = await PDFLib.PDFDocument.load(bakedBytes);
+                
+                pdfDoc.removePage(activePageNum - 1);
+                const newBytes = await pdfDoc.save();
+
+                pdfData.bytes = newBytes;
+                pdfData.totalPages -= 1;
+                pdfData.items = []; // Sudah menyatu (baked)
+
+                pdfDocRendering = await pdfjsLib.getDocument({ data: pdfData.bytes.slice() }).promise;
+                await renderAllPages(pdfData);
+                renderFileList(); 
+            } catch (err) { console.error(err); alert("Gagal menghapus halaman."); }
+            hideLoading();
+        });
+
+        // --- 6. MANAJEMEN ITEM (TTD/TEKS) & PENYATUAN BUKTI (BAKING) ---
+        
+        function createItemOnPdf(type, content) {
+            const pdf = pdfFiles.find(p => p.id === currentPdfId);
+            if (!pdf) return;
+
+            const targetPageWrapper = document.querySelector(`.pdf-page-wrapper[data-page="${activePageNum}"]`);
+            if (!targetPageWrapper) return;
+            const itemsContainer = targetPageWrapper.querySelector('.items-container');
+
+            const id = 'item_' + Date.now();
+            const container = document.createElement('div');
+            container.id = id;
+            container.className = 'editable-item is-active pointer-events-auto';
+            
+            const controlsHtml = `<div class="item-controls"><button class="remove-btn">×</button><div class="resize-handle"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l5-5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg></div></div>`;
+            
+            container.style.left = '50px';
+            container.style.top = '100px';
+
+            if (type === 'image') {
+                container.innerHTML = `<img src="${content}" alt="TTD">` + controlsHtml;
+                const img = new Image();
+                img.onload = () => {
+                    const ratio = img.naturalHeight / img.naturalWidth;
+                    container.style.width = '150px';
+                    container.style.height = `${150 * ratio}px`;
+                };
+                img.src = content;
+            } else if (type === 'text') {
+                container.innerHTML = `<div class="item-text">${content}</div>` + controlsHtml;
+                container.style.width = '150px';
+                container.style.height = '40px';
+                container.dataset.text = content;
+            }
+
+            itemsContainer.appendChild(container);
+            const itemObj = { id, type, element: container, page: activePageNum };
+            pdf.items.push(itemObj);
+            
+            setActiveItem(id);
+            attachItemEvents(container, itemObj);
+        }
+
+        function setActiveItem(id) {
+            activeItemId = id;
+            document.querySelectorAll('.editable-item').forEach(el => el.classList.remove('is-active'));
+            if (id) document.getElementById(id)?.classList.add('is-active');
+        }
+
+        function deselectItems(e) {
+            if (e.target.id === 'editor-area' || e.target.id === 'zoom-wrapper' || e.target.id === 'pdf-document-container' || e.target.tagName.toLowerCase() === 'canvas') {
+                setActiveItem(null);
+            }
+        }
+
+        function attachItemEvents(container, itemObj) {
+            const removeBtn = container.querySelector('.remove-btn');
+            const resizeHandle = container.querySelector('.resize-handle');
+            let isDragging = false, isResizing = false;
+            let startX, startY, initialLeft, initialTop, initialWidth, initialHeight, imgRatio = 1;
+
+            container.addEventListener('pointerdown', (e) => {
+                if(e.target === resizeHandle || e.target.closest('.resize-handle') || e.target === removeBtn) return;
+                e.preventDefault(); e.stopPropagation();
+                setActiveItem(container.id);
+                isDragging = true; 
+                startX = e.touches ? e.touches[0].clientX : e.clientX; 
+                startY = e.touches ? e.touches[0].clientY : e.clientY;
+                initialLeft = container.offsetLeft; initialTop = container.offsetTop;
+            });
+
+            resizeHandle.addEventListener('pointerdown', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                setActiveItem(container.id);
+                isResizing = true; 
+                startX = e.touches ? e.touches[0].clientX : e.clientX; 
+                startY = e.touches ? e.touches[0].clientY : e.clientY;
+                initialWidth = container.offsetWidth; initialHeight = container.offsetHeight;
+                imgRatio = initialHeight / initialWidth;
+            });
+
+            const moveHandler = (e) => {
+                if (!isDragging && !isResizing) return;
+                e.preventDefault();
+                
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+                const deltaX = (clientX - startX) / currentZoom;
+                const deltaY = (clientY - startY) / currentZoom;
+                
+                if (isDragging) {
+                    container.style.left = `${initialLeft + deltaX}px`;
+                    container.style.top = `${initialTop + deltaY}px`;
+                } else if (isResizing) {
+                    const newWidth = Math.max(40, initialWidth + deltaX);
+                    container.style.width = `${newWidth}px`;
+                    if (container.querySelector('img')) {
+                        container.style.height = `${newWidth * imgRatio}px`;
+                    } else if (container.querySelector('.item-text')) {
+                        container.style.height = `${Math.max(20, initialHeight + deltaY)}px`;
+                        container.querySelector('.item-text').style.fontSize = `${container.offsetHeight * 0.6}px`;
+                    }
+                }
+            };
+
+            const upHandler = () => { isDragging = false; isResizing = false; };
+            document.addEventListener('pointermove', moveHandler, { passive: false });
+            document.addEventListener('pointerup', upHandler);
+            document.addEventListener('pointercancel', upHandler);
+            document.addEventListener('touchend', upHandler);
+
+            removeBtn.addEventListener('pointerdown', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                if(container.parentElement) container.parentElement.removeChild(container);
+                const pdf = pdfFiles.find(p => p.id === currentPdfId);
+                if(pdf) pdf.items = pdf.items.filter(i => i.id !== container.id);
+                activeItemId = null;
+            });
+        }
+
+        // --- SISTEM PENYATUAN TTD KE DALAM PDF (BAKING) ---
+        async function bakePdf(pdfData) {
+            if (!pdfData.items || pdfData.items.length === 0) return pdfData.bytes; 
+            
+            const pdfDoc = await PDFLib.PDFDocument.load(pdfData.bytes.slice());
+            const helveticaBold = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+            const pages = pdfDoc.getPages();
+
+            for (let item of pdfData.items) {
+                const targetPage = pages[item.page - 1];
+                const pdfW = targetPage.getWidth(); 
+                const pdfH = targetPage.getHeight();
+                
+                const wrapperWidth = pdfW * BASE_SCALE;
+                const wrapperHeight = pdfH * BASE_SCALE;
+                
+                const ratioX = pdfW / wrapperWidth; 
+                const ratioY = pdfH / wrapperHeight;
+                
+                const el = item.element;
+                
+                const styleW = parseFloat(el.style.width) || 150;
+                const styleH = parseFloat(el.style.height) || 40;
+                const styleL = parseFloat(el.style.left) || 50;
+                const styleT = parseFloat(el.style.top) || 100;
+
+                const fW = styleW * ratioX; 
+                const fH = styleH * ratioY;
+                const fX = styleL * ratioX; 
+                const fY = pdfH - ((styleT + styleH) * ratioY);
+
+                if (item.type === 'image') {
+                    const imgSrc = el.querySelector('img').src;
+                    const imgB = await fetch(imgSrc).then(r => r.arrayBuffer());
+                    const png = await pdfDoc.embedPng(imgB);
+                    targetPage.drawImage(png, { x: fX, y: fY, width: fW, height: fH });
+                } else if (item.type === 'text') {
+                    targetPage.drawText(el.dataset.text, { x: fX + (fW*0.05), y: fY + (fH*0.2), size: styleH*ratioY*0.7, font: helveticaBold, color: PDFLib.rgb(0,0,0) });
+                }
+            }
+            return await pdfDoc.save();
+        }
+
+        // --- 7. TTD & STEMPEL LOGIC ---
+        const contentDrawUpload = document.getElementById('content-draw-upload');
+        const contentSaved = document.getElementById('content-saved');
+        const savedSigGrid = document.getElementById('saved-sig-grid');
+        const noSavedMsg = document.getElementById('no-saved-msg');
+        const cbSaveSig = document.getElementById('cb-save-sig');
+
+        function getSavedSignatures() { try { const saved = localStorage.getItem('ttd_tersimpan_v4'); return saved ? JSON.parse(saved) : []; } catch (e) { return []; } }
+        function saveSignature(dataURL) { let saved = getSavedSignatures(); if (saved.length >= 8) saved.shift(); saved.push({ id: Date.now(), data: dataURL }); localStorage.setItem('ttd_tersimpan_v4', JSON.stringify(saved)); }
+        function deleteSignature(id) { let saved = getSavedSignatures(); saved = saved.filter(s => s.id !== id); localStorage.setItem('ttd_tersimpan_v4', JSON.stringify(saved)); renderSavedSignatures(); }
+        
+        function renderSavedSignatures() {
+            const saved = getSavedSignatures();
+            savedSigGrid.innerHTML = '';
+            if (saved.length === 0) { noSavedMsg.classList.remove('hidden'); } else {
+                noSavedMsg.classList.add('hidden');
+                saved.forEach(sig => {
+                    const div = document.createElement('div');
+                    div.className = 'relative bg-white border border-theme rounded-xl p-2 flex flex-col items-center justify-center cursor-pointer hover:border-[var(--accent)] shadow-sm transition-colors';
+                    div.onclick = () => { createItemOnPdf('image', sig.data); document.getElementById('modal-signature').classList.replace('flex', 'hidden'); };
+                    const img = document.createElement('img'); img.src = sig.data; img.className = 'w-full h-20 object-contain bg-checker mb-2 rounded';
+                    const delBtn = document.createElement('button');
+                    delBtn.className = 'absolute top-1 right-1 bg-red-100 text-red-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs hover:bg-red-200';
+                    delBtn.innerHTML = '×';
+                    delBtn.onclick = (e) => { e.stopPropagation(); if(confirm('Hapus item ini dari memori HP?')) deleteSignature(sig.id); };
+                    div.appendChild(img); div.appendChild(delBtn); savedSigGrid.appendChild(div);
+                });
+            }
+        }
+
+        function resizeSigCanvas() {
+            const rect = sigPadCanvas.parentElement.getBoundingClientRect();
+            sigPadCanvas.width = rect.width - 32; sigPadCanvas.height = rect.height - 32;
+            sigCtx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-main').trim();
+            sigCtx.lineWidth = 4; sigCtx.lineCap = 'round'; sigCtx.lineJoin = 'round';
+        }
+
+        function clearSignature() {
+            sigCtx.clearRect(0, 0, sigPadCanvas.width, sigPadCanvas.height);
+            uploadedImageObj = null;
+            if (currentMode === 'upload') {
+                document.getElementById('upload-overlay').classList.remove('hidden');
+                document.getElementById('controls-transparency').classList.replace('flex', 'hidden');
+                document.getElementById('image-upload').value = '';
+            }
+        }
+
+        function setActiveTabSig(activeTabEl) {
+            ['tab-draw', 'tab-upload', 'tab-saved'].forEach(id => {
+                const tab = document.getElementById(id);
+                tab.classList.remove('text-[var(--accent)]', 'border-[var(--accent)]');
+                tab.classList.add('text-muted-theme', 'border-transparent');
+            });
+            activeTabEl.classList.remove('text-muted-theme', 'border-transparent');
+            activeTabEl.classList.add('text-[var(--accent)]', 'border-[var(--accent)]');
+        }
+
+        document.getElementById('tab-draw').onclick = (e) => {
+            currentMode = 'draw'; setActiveTabSig(e.target);
+            contentDrawUpload.classList.replace('hidden', 'flex'); contentSaved.classList.replace('flex', 'hidden');
+            document.getElementById('upload-overlay').classList.add('hidden');
+            document.getElementById('controls-transparency').classList.replace('flex', 'hidden');
+            clearSignature();
+        };
+
+        document.getElementById('tab-upload').onclick = (e) => {
+            currentMode = 'upload'; setActiveTabSig(e.target);
+            contentDrawUpload.classList.replace('hidden', 'flex'); contentSaved.classList.replace('flex', 'hidden');
+            document.getElementById('upload-overlay').classList.remove('hidden');
+            clearSignature();
+        };
+
+        document.getElementById('tab-saved').onclick = (e) => {
+            currentMode = 'saved'; setActiveTabSig(e.target);
+            contentDrawUpload.classList.replace('flex', 'hidden'); contentSaved.classList.replace('hidden', 'flex');
+            renderSavedSignatures();
+        };
+
+        let isDrawingPad = false;
+        function getSigPos(e) {
+            const rect = sigPadCanvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX; const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return { x: (clientX - rect.left) * (sigPadCanvas.width / rect.width), y: (clientY - rect.top) * (sigPadCanvas.height / rect.height) };
+        }
+        sigPadCanvas.addEventListener('pointerdown', (e) => { if (currentMode !== 'draw') return; e.preventDefault(); isDrawingPad = true; const pos = getSigPos(e); sigCtx.beginPath(); sigCtx.moveTo(pos.x, pos.y); });
+        sigPadCanvas.addEventListener('pointermove', (e) => { if (!isDrawingPad || currentMode !== 'draw') return; e.preventDefault(); const pos = getSigPos(e); sigCtx.lineTo(pos.x, pos.y); sigCtx.stroke(); });
+        const stopDrawPad = (e) => { if(currentMode === 'draw') { e.preventDefault(); isDrawingPad = false; } };
+        sigPadCanvas.addEventListener('pointerup', stopDrawPad); sigPadCanvas.addEventListener('pointerout', stopDrawPad); sigPadCanvas.addEventListener('pointercancel', stopDrawPad);
+
+        document.getElementById('image-upload').addEventListener('change', (e) => {
+            const file = e.target.files[0]; if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    uploadedImageObj = img;
+                    document.getElementById('upload-overlay').classList.add('hidden');
+                    document.getElementById('controls-transparency').classList.replace('hidden', 'flex');
+                    processImg();
+                }; img.src = event.target.result;
+            }; reader.readAsDataURL(file);
+        });
+
+        const slider = document.getElementById('threshold-slider');
+        const cbKeep = document.getElementById('cb-keep-color');
+        slider.addEventListener('input', (e) => { document.getElementById('threshold-val').textContent = e.target.value; if(uploadedImageObj) processImg(); });
+        cbKeep.addEventListener('change', () => { if(uploadedImageObj) processImg(); });
+
+        function processImg() {
+            if (!uploadedImageObj) return;
+            sigCtx.clearRect(0, 0, sigPadCanvas.width, sigPadCanvas.height);
+            const cRatio = sigPadCanvas.width / sigPadCanvas.height; const iRatio = uploadedImageObj.width / uploadedImageObj.height;
+            let dW = sigPadCanvas.width, dH = sigPadCanvas.height, oX = 0, oY = 0;
+            if (iRatio > cRatio) { dH = dW / iRatio; oY = (sigPadCanvas.height - dH) / 2; } else { dW = dH * iRatio; oX = (sigPadCanvas.width - dW) / 2; }
+            sigCtx.drawImage(uploadedImageObj, oX, oY, dW, dH);
+            
+            const thresh = parseInt(slider.value); const keep = cbKeep.checked;
+            const isDarkTheme = document.documentElement.getAttribute('data-theme') !== 'light' && document.documentElement.getAttribute('data-theme') !== 'sepia';
+            const imgData = sigCtx.getImageData(0, 0, sigPadCanvas.width, sigPadCanvas.height); const data = imgData.data;
+            
+            for (let i = 0; i < data.length; i += 4) {
+                const bright = (data[i] + data[i+1] + data[i+2]) / 3;
+                if (bright > thresh) { data[i + 3] = 0; } 
+                else if (!keep) { 
+                    data[i] = isDarkTheme ? 255 : 0; 
+                    data[i + 1] = isDarkTheme ? 255 : 0; 
+                    data[i + 2] = isDarkTheme ? 255 : 20; 
+                }
+            }
+            sigCtx.putImageData(imgData, 0, 0);
+        }
+
+        document.getElementById('btn-apply-sig').addEventListener('click', () => {
+            const imgData = sigCtx.getImageData(0, 0, sigPadCanvas.width, sigPadCanvas.height).data;
+            let isBlank = true; let minX=sigPadCanvas.width, minY=sigPadCanvas.height, maxX=0, maxY=0;
+            for(let y=0; y<sigPadCanvas.height; y++){ for(let x=0; x<sigPadCanvas.width; x++){ if(imgData[((y*sigPadCanvas.width)+x)*4+3]>0){ isBlank=false; minX=Math.min(minX,x); maxX=Math.max(maxX,x); minY=Math.min(minY,y); maxY=Math.max(maxY,y); } } }
+            
+            if (isBlank) { alert('Area gambar masih kosong!'); return; }
+            
+            const pad = 10; minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad); maxX=Math.min(sigPadCanvas.width,maxX+pad); maxY=Math.min(sigPadCanvas.height,maxY+pad);
+            const cropW = maxX-minX, cropH = maxY-minY; const tCanv = document.createElement('canvas'); tCanv.width=cropW; tCanv.height=cropH;
+            tCanv.getContext('2d').putImageData(sigCtx.getImageData(minX,minY,cropW,cropH), 0, 0);
+            
+            const finalDataURL = tCanv.toDataURL('image/png');
+            if (cbSaveSig.checked) saveSignature(finalDataURL);
+            
+            createItemOnPdf('image', finalDataURL);
+            document.getElementById('modal-signature').classList.replace('flex', 'hidden');
+        });
+
+        document.getElementById('btn-apply-text').addEventListener('click', () => {
+            const t = document.getElementById('input-text-name').value.trim();
+            if(!t) { alert("Masukkan teks!"); return; }
+            createItemOnPdf('text', t);
+            document.getElementById('modal-text').classList.replace('flex', 'hidden');
+        });
+
+        // --- 8. LOGIC GABUNG, SIMPAN & KIRIM PDF ---
+        
+        function forceDownload(bytes, name) {
+            const blob = new Blob([bytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url; a.download = name;
+            document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+        }
+
+        document.getElementById('btn-save-pdf').addEventListener('click', async () => {
+            const pdfData = pdfFiles.find(p => p.id === currentPdfId);
+            if (!pdfData) return;
+            setActiveItem(null); 
+            showLoading("Menyiapkan Unduhan...");
+            try {
+                const outBytes = await bakePdf(pdfData);
+                const fileName = `[TTD]_${pdfData.name}`;
+                forceDownload(outBytes, fileName);
+            } catch (err) { console.error(err); alert('Terjadi kesalahan saat menyimpan PDF.'); }
+            hideLoading();
+        });
+
+        document.getElementById('btn-share-pdf').addEventListener('click', async () => {
+            const pdfData = pdfFiles.find(p => p.id === currentPdfId);
+            if (!pdfData) return;
+            setActiveItem(null); 
+            showLoading("Menyiapkan File...");
+            try {
+                const outBytes = await bakePdf(pdfData);
+                const fileName = `[TTD]_${pdfData.name}`;
+                const fileToShare = new File([outBytes], fileName, { type: 'application/pdf' });
+                
+                if (navigator.canShare && navigator.canShare({ files: [fileToShare] })) {
+                    await navigator.share({ files: [fileToShare], title: 'Dokumen Final', text: 'Berikut dokumen PDF yang sudah diproses.' });
+                } else {
+                    alert('Maaf, Browser/Perangkat Anda tidak mendukung fitur berbagi file langsung. File akan otomatis diunduh.');
+                    forceDownload(outBytes, fileName);
+                }
+            } catch (err) { console.error(err); alert('Terjadi kesalahan saat mengirim PDF.'); }
+            hideLoading();
+        });
+
+        document.getElementById('btn-merge-pdf').addEventListener('click', async () => {
+            if (pdfFiles.length < 2) {
+                alert("Minimal harus ada 2 file PDF di daftar untuk digabungkan. Silakan unggah file lagi.");
+                return;
+            }
+            if(!confirm("Semua file di daftar ini akan digabungkan menjadi SATU dokumen secara berurutan. Lanjutkan?")) return;
+            
+            setActiveItem(null);
+            showLoading("Menggabungkan File PDF...");
+            try {
+                const mergedPdf = await PDFLib.PDFDocument.create();
+                
+                for (let pdf of pdfFiles) {
+                    const bakedBytes = await bakePdf(pdf);
+                    const tempDoc = await PDFLib.PDFDocument.load(bakedBytes);
+                    const copiedPages = await mergedPdf.copyPages(tempDoc, tempDoc.getPageIndices());
+                    copiedPages.forEach((page) => mergedPdf.addPage(page));
+                }
+                
+                const mergedBytes = await mergedPdf.save();
+                const newFile = {
+                    id: 'pdf_' + Date.now(),
+                    name: `Dokumen_Gabungan_${pdfFiles.length}_File.pdf`,
+                    bytes: mergedBytes,
+                    totalPages: mergedPdf.getPageCount(),
+                    items: [], 
+                    currentPage: 1
+                };
+                
+                pdfFiles.push(newFile);
+                renderFileList();
+                openPdf(newFile.id);
+                alert("Berhasil! Semua file telah digabungkan menjadi dokumen baru di bagian bawah daftar.");
+                
+                if(window.innerWidth < 1024 && document.getElementById('sidebar').classList.contains('open')) {
+                    toggleSidebar();
+                }
+            } catch(err) { 
+                console.error(err); alert("Gagal menggabungkan PDF!"); 
+            }
+            hideLoading();
+        });
+
+        // --- 9. REGISTER SERVICE WORKER ---
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(reg => {
+                    console.log('Service Worker siap!');
+                }).catch(err => console.log('Service Worker gagal', err));
+            });
+        }
+
+        // --- 10. FILE HANDLER (INTEGRASI OS ANDROID PWA) ---
+        if ('launchQueue' in window) {
+            window.launchQueue.setConsumer(async (launchParams) => {
+                if (launchParams.files && launchParams.files.length > 0) {
+                    const filesToOpen = [];
+                    for (const handle of launchParams.files) {
+                        const file = await handle.getFile();
+                        if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+                            filesToOpen.push(file);
+                        }
+                    }
+                    if (filesToOpen.length > 0) { handleFiles(filesToOpen); }
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
